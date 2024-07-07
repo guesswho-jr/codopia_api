@@ -1,0 +1,10 @@
+<?php
+define("BAD_REQUEST_CODE", 900);
+define("EMPTY_RESPONSE", 901);
+define("VALIDATION_ERROR", 902);
+define("DB_SERVER_ERROR", 903);
+define("NOT_ALLOWED", 904);
+define("PASSWORD_DONT_MATCH", 905);
+define("INVALID_TOKEN", 906);
+define("INVALID_NUMBER_OF_PARAMS", 907);
+define("ALREADY_TAKEN_THE_TEST", 908);
