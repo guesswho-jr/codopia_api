@@ -24,7 +24,8 @@ if (count(explode('/', URI)) < 4) {
     ]));
 }
 require_once "./utils.php";
-require_once "../admin/scripts/validation.php";
+require_once "./scripts/validation.php";
+require_once "./dotenv.php";
 
 define("PARAMS", getTheRequired(URI));
 // die(print_r(PARAMS));
@@ -52,7 +53,7 @@ switch (PARAMS[0]) {
         // event_id, user_id
         die(acceptEvent((int)PARAMS[1], (int)PARAMS[2]));
     case "decode":
-        $jwt = new JWT(KEY);
+        $jwt = new JWT($_ENV["KEY"]);
         $data = (array)json_decode(file_get_contents("php://input"), true)["data"];
         $token = $data["token"];
         if (!$token) die(json_encode(["code" => BAD_REQUEST_CODE]));

@@ -1,7 +1,7 @@
 <?php
 
-require_once "../../admin/scripts/classes.php";
-require_once "../../admin/scripts/validation.php";
+require_once "./scripts/classes.php";
+require_once "./scripts/validation.php";
 if (!(
     isset($_POST["projId"]) &&
     isset($_POST["name"]) &&

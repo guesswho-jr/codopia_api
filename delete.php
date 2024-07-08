@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 define("UPLOAD_DIR", realpath("/dashboard/upload/uploads"));
-require_once "../../admin/scripts/classes.php";
+require_once "./scripts/classes.php";
 session_start();
 $userid = $_SESSION["userid"];
 $db = new DataBase();

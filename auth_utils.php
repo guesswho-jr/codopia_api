@@ -2,15 +2,14 @@
 
 declare(strict_types=1);
 require_once "./instance.php";
-require_once "../admin/scripts/validation.php";
+require_once "./scripts/validation.php";
 require_once "./codes.php";
-require_once "../admin/scripts/classes.php";
-require_once '../admin/scripts/PHPMailer/src/Exception.php';
-require_once '../admin/scripts/PHPMailer/src/PHPMailer.php';
-require_once '../admin/scripts/PHPMailer/src/SMTP.php';
-
-
-const KEY = '67e0321f1d0ba5ce3074c4fcb3916241bdae709983cd48d923e21a3f2d5ba0d21f05723a133ad38db0d85a6c00b3b4555e7afdadc3ac8386de8f5de6e84128d8aa8a51cbf387afba14434a3e88eaf7a667c985266ed3888ebad59e31c1a519da44d0801e5fd12c7be82a89b29c872bf0143474a89ccddf909dcbf52300decd4a';
+require_once "./scripts/classes.php";
+require_once './scripts/PHPMailer/src/Exception.php';
+require_once './scripts/PHPMailer/src/PHPMailer.php';
+require_once './scripts/PHPMailer/src/SMTP.php';
+require_once "./dotenv.php";
+// const KEY = '67e0321f1d0ba5ce3074c4fcb3916241bdae709983cd48d923e21a3f2d5ba0d21f05723a133ad38db0d85a6c00b3b4555e7afdadc3ac8386de8f5de6e84128d8aa8a51cbf387afba14434a3e88eaf7a667c985266ed3888ebad59e31c1a519da44d0801e5fd12c7be82a89b29c872bf0143474a89ccddf909dcbf52300decd4a';
 class JWT
 {
     public function __construct(private string $key)
@@ -114,7 +113,7 @@ function login(string $data)
         "uploads" => $user[0]["uploads"],
         "user_id" => $user[0]["id"]
     ];
-    $jwtCont = new JWT(KEY);
+    $jwtCont = new JWT($_ENV["KEY"]);
     return json_encode([
         "token" => $jwtCont->encode($payload)
     ]);

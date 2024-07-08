@@ -10,6 +10,7 @@ require_once "./auth_utils.php";
 require_once "./exceptions.php";
 require_once "./scripts/classes.php";
 require_once "./otherutils.php";
+require_once "./dotenv.php";
 
 function getTheRequired(string $rawUrl): array
 {
@@ -24,7 +25,7 @@ function getTheRequired(string $rawUrl): array
 
 function getData(string $sql, array $params = [])
 {
-    $jwt = new JWT(KEY);
+    $jwt = new JWT($_ENV["KEY"]);
     $auth = new Authentication($jwt);
     if (!$auth->authenticate()) {
         http_response_code(403);
@@ -63,7 +64,7 @@ function getData(string $sql, array $params = [])
 
 function getDataWithParams(string $sql, array $params = [])
 {
-    $jwt = new JWT(KEY);
+    $jwt = new JWT($_ENV["KEY"]);
     $auth = new Authentication($jwt);
     if (!$auth->authenticate()) {
         http_response_code(403);
@@ -114,7 +115,7 @@ function acceptEvent(int $event_id, int $user_id)
 function like(string $user_id, string $project_id)
 {
     $action = -1;
-    $jwt = new JWT(KEY);
+    $jwt = new JWT($_ENV["KEY"]);
     $auth = new Authentication($jwt);
     if (!$auth->authenticate()) {
         http_response_code(403);
@@ -155,7 +156,7 @@ class TakeApiTest
     public function __construct(string $subjectID, int $userID)
     {
         global $db;
-        $jwt = new JWT(KEY);
+        $jwt = new JWT($_ENV["KEY"]);
         $auth = new Authentication($jwt);
         if (!$auth->authenticate()) {
             http_response_code(403);
@@ -290,7 +291,7 @@ class TakeApiTest
 
 function deleteProject(string $project_id, string $user_id)
 {
-    $jwt = new JWT(KEY);
+    $jwt = new JWT($_ENV["KEY"]);
     $auth = new Authentication($jwt);
     if (!$auth->authenticate()) {
         http_response_code(403);
@@ -315,7 +316,7 @@ function deleteProject(string $project_id, string $user_id)
 function submitFeedback()
 {
     global $db;
-    $jwt = new JWT(KEY);
+    $jwt = new JWT($_ENV["KEY"]);
     $auth = new Authentication($jwt);
     if (!$auth->authenticate()) {
         http_response_code(403);
@@ -335,7 +336,7 @@ function submitFeedback()
 
 function upload(array $theFile, string $name, string $desc, int $user_id)
 {
-    $jwt = new JWT(KEY);
+    $jwt = new JWT($_ENV["KEY"]);
     $auth = new Authentication($jwt);
     if (!$auth->authenticate()) {
         http_response_code(403);
