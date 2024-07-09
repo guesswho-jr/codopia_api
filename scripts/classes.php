@@ -49,7 +49,7 @@ class DataBase
 {
     private $con;
     // public function __construct(string $username = "if0_36424959", string $password = "infinitecode", string $host = "sql104.infinityfree.com", string $dbname = "if0_36424959_codopia")
-    public function __construct(string $username = "root", string $password = "", string $host = "localhost", string $dbname = "donict")
+    public function __construct(string $username = "freedb_admin_root", string $password = 'f9DuQP!BXCy$wT4', string $host = "sql.freedb.tech", string $dbname = "freedb_donict")
     {
         $this->con = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     }
