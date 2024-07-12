@@ -1,6 +1,0 @@
-FROM httpd:2.4-alpine
-FROM php:8.4.0alpha1-zts-alpine3.20
-
-COPY . /usr/local/apache2/htdocs/
-
-RUN docker-php-ext-install pdo pdo_mysql
