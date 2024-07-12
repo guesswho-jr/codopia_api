@@ -1,7 +1,10 @@
 <?php
 
 declare(strict_types=1);
-define("UPLOAD_DIR", realpath("/dashboard/upload/uploads"));
+define("UPLOAD_DIR", realpath("./uploads"));
+if (!is_dir(UPLOAD_DIR)) {
+    mkdir(UPLOAD_DIR);
+}
 require_once "./scripts/classes.php";
 session_start();
 $userid = $_SESSION["userid"];
