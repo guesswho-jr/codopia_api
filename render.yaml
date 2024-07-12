@@ -1,6 +1,0 @@
-services:
-  -type: web
-  plan: free
-  name: Codopia
-  runtime: docker
-  repo: "https://github.com/guesswho-jr/codopia_api.git"
