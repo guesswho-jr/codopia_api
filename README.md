@@ -1,3 +1,3 @@
 # Codopia api
 
-api for the rn app
+A vanilla PHP back end for the react native application.
